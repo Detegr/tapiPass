@@ -7,15 +7,22 @@ import Control.Monad.ST.Safe
 import Data.Text
 import Data.Maybe (fromMaybe)
 import qualified Data.Text.IO as TIO
+import Control.Monad.Trans.Error (runErrorT)
 
-type TapiPassHT s = HT.HashTable s Text Text
+import YubiKey
 
+{-
 hashTest :: ST s Text
 hashTest = do
   ht <- HT.new :: ST s (HT.HashTable s Text Text)
   HT.insert ht "key" "val"
   mb <- HT.lookup ht "key"
-  return $ fromMaybe "nothing" mb
+  return $ fromMaybe "nothing" mb
+-}
 
 main :: IO()
-main = TIO.putStrLn $ runST hashTest
+main = do
+  ok <- runErrorT $ withYubiKey $ \_ -> putStrLn "YubiKey found"
+  case ok of
+    Right _ -> putStrLn "YubiKey was found and function ran correcltly"
+    Left err -> putStrLn $ "Error: " ++ err
