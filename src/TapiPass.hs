@@ -24,5 +24,5 @@ main :: IO()
 main = do
   ok <- runErrorT $ withYubiKey $ \_ -> putStrLn "YubiKey found"
   case ok of
-    Right _ -> putStrLn "YubiKey was found and function ran correcltly"
+    Right _ -> putStrLn "YubiKey was found and function ran correctly"
     Left err -> putStrLn $ "Error: " ++ err

@@ -20,7 +20,7 @@ executable tapiPass
    main-is:            TapiPass.hs
    other-modules:      YubiKey
   -- other-extensions:    
-  build-depends:       base >=4.5 && <4.6, hashtables >= 1.1.2.1, text, transformers, hashable
+  build-depends:       base >=4.5, hashtables >= 1.1.2.1, text, transformers, hashable
   hs-source-dirs:      src
   default-language:    Haskell2010
   extra-libraries:     ykpers-1
