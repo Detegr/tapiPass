@@ -1,6 +1,6 @@
 {-# LANGUAGE ForeignFunctionInterface #-}
 
-module YubiKey(withYubiKey) where
+module YubiKey(withYubiKey, YubiKey) where
 
 import Foreign.C.String
 import Foreign.C.Types
